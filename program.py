@@ -16,6 +16,7 @@ for line in fileinput.input():
 phrase = phrase.replace('\n', '')
 key = key.replace('\n', '')
 
+# Convirtiendo key a valor en int (ASCII)
 key = [ord(char) for char in key]
 
 # KSA
@@ -26,7 +27,8 @@ S = [i for i in range(256)]
 j = 0
 for i in range(256):
 	j = (j + S[i] + key[i % keylength]) % 256
-	S[i], S[j] = S[j], S[i]  # swap
+	# swap
+	S[i], S[j] = S[j], S[i]
 	
 # PRGA 
 i = 0
@@ -38,7 +40,6 @@ while k < len(phrase):
 	j = (j + S[i]) % 256
 	# swap
 	S[i], S[j] = S[j], S[i]
-
 	K[k] = S[(S[i] + S[j]) % 256]
 	k += 1
 
@@ -46,6 +47,8 @@ while k < len(phrase):
 output = [i for i in range(len(phrase))]
 for i in range(len(phrase)):
 	output[i] = ord(phrase[i]) ^ K[i]
-	
+
+# Mostrando salida	
 for x in output:
 	print("%02X" % x, end='')
+print('')
