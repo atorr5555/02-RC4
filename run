@@ -1,3 +1,4 @@
 #!/bin/sh
-gcc program.c -o program
-./program
+#gcc program.c -o program
+#./program
+python3 program.py
