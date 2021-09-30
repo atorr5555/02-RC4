@@ -1,6 +1,6 @@
 #include <stdlib.h> //Standard library
 #include <stdio.h> //Standard input / output
-//#include <string.h> 
+#include <string.h> 
 
 int main() {
   unsigned char key[20];
